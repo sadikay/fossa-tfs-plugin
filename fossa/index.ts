@@ -26,7 +26,8 @@ tl.debug(`Service: ${Service}`);
 const EndpointURL = tl.getEndpointUrl(Service, true);
 tl.debug(`EndpointURL: ${EndpointURL}`);
 const ServiceAuthorization = tl.getEndpointAuthorization(Service, true);
-
+const FOSSATest = tl.getInput('failOnError') as 'TEST' | 'SKIP';
+tl.debug(`FOSSATest: ${FOSSATest}`);
 
 const run = async () => {
   try {
@@ -45,6 +46,10 @@ const run = async () => {
     tl.cd(WorkingDirectory);
 
     await analyze();
+
+    if (FOSSATest === 'TEST') {
+      await test();
+    }
   } catch (err) {
     tl.setResult(tl.TaskResult.Failed, err.message);
   }
@@ -99,6 +104,16 @@ const install = async (): Promise<string> => {
     return Path.resolve(CLIDirectory, 'fossa.exe');
   }
   return Path.resolve(CLIDirectory, 'fossa');
+};
+
+const test = async () => {
+  const fossa = tl.tool(CLIPath);
+  fossa.arg('test');
+  fossa.arg(['--endpoint', EndpointURL]);
+  fossa.argIf(!!CLIConfig, ['--config', CLIConfig]);
+  tl.setVariable('FOSSA_API_KEY', ServiceAuthorization.parameters.apitoken, true);
+  await fossa.exec();
+  tl.setVariable('FOSSA_API_KEY', null);
 };
 
 const buildDownloadURL = () => {
