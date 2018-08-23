@@ -1,0 +1,102 @@
+{
+  "id": "ecdc6474-bdb5-43cc-bca9-afef51d6abe7",
+  "name": "FOSSA",
+  "friendlyName": "FOSSA",
+  "description": "Open Source Compliance on Autopilot",
+  "helpMarkDown": "https://docs.fossa.io",
+  "category": "Build",
+  "visibility": [
+    "Build"
+  ],
+  "author": "FOSSA",
+  "version": {
+    "Major": 0,
+    "Minor": 0,
+    "Patch": 15
+  },
+  "demands": [
+    "node.js"
+  ],
+  "icons": {
+    "default": "../images/fossa-glyph-dark.png"
+  },
+  "minimumAgentVersion": "2.100.0",
+  "instanceNameFormat": "FOSSA $(message)",
+  "inputs": [
+    {
+      "name": "FOSSAService",
+      "type": "connectedService:fossa",
+      "label": "FOSSA endpoint",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Select the FOSSA endpoint to use."
+    },
+    {
+      "name": "source",
+      "type": "pickList",
+      "label": "FOSSA CLI Location",
+      "defaultValue": "INSTALL",
+      "required": true,
+      "helpMarkDown": "Select whether to download and install fossa-cli or to use an already installed version",
+      "options": {
+        "INSTALL": "Download and install",
+        "LOCAL": "Use local version"
+      }
+    },
+    {
+      "name": "path",
+      "type": "filePath",
+      "label": "Path to fossa-cli",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Absolute path to the fossa binary",
+      "visibleRule": "source = LOCAL"
+    },
+    {
+      "name": "version",
+      "type": "string",
+      "label": "Version of fossa-cli to install",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Version tag from https://github.com/fossas/fossa-cli/releases to install",
+      "visibleRule": "source = INSTALL"
+    },
+    {
+      "name": "cliConfig",
+      "type": "filePath",
+      "label": "FOSSA config file",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "If you have a `.fossa.yml` configuration file for this project, select it here. If this is left blank, a default configuration file will be generated each build by running `fossa init`."
+    },
+    {
+      "name": "cwd",
+      "type": "filePath",
+      "label": "Source directory",
+      "required": false,
+      "helpMarkDown": "Working directory that FOSSA should analyze."
+    },
+    {
+      "name": "failOnError",
+      "type": "pickList",
+      "label": "FOSSA analysis results",
+      "defaultValue": "TEST",
+      "required": true,
+      "helpMarkDown": "Select whether to wait for FOSSA to analyze your build and exit with a non-zero status code if issues are found.",
+      "options": {
+        "TEST": "Fail build if issues are found",
+        "SKIP": "I'll check for issues on FOSSA"
+      }
+    }
+  ],
+  "files": {
+    "path": "images",
+    "addressable": true
+  },
+  "execution": {
+    "Node": {
+      "target": "index.js",
+      "argumentFormat": ""
+    }
+  }
+}

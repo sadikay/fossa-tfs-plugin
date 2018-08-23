@@ -1,0 +1,74 @@
+{
+  "manifestVersion": 1,
+  "id": "fossa-vsts",
+  "publisher": "Fossa",
+  "version": "0.0.15",
+  "name": "FOSSA",
+  "description": "Automatically analyze your code for open source license compliance and security vulnerabilities",
+  "public": false,
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "details.md"
+    }
+  },
+  "categories": [
+    "Build and release"
+  ],
+  "branding": {
+    "color": "rgb(78, 104, 193)",
+    "theme": "dark"
+  },
+  "icons": {
+    "default": "images/fossa-glyph-dark.png"
+  },
+  "files": [
+    {
+      "path": "fossa",
+      "addressable": true
+    },
+    {
+      "path": "images",
+      "addressable": true
+    }
+  ],
+  "contributions": [
+    {
+      "id": "fossa-cli",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "fossa"
+      }
+    },
+    {
+      "id": "service-endpoint",
+      "description": "Service Endpoint type for FOSSA connections",
+      "type": "ms.vss-endpoint.service-endpoint-type",
+      "targets": [
+        "ms.vss-endpoint.endpoint-types"
+      ],
+      "properties": {
+        "name": "fossa",
+        "displayName": "FOSSA",
+        "url": {
+          "displayName": "Endpoint URL",
+          "defaultValue": "https://app.fossa.io",
+          "helpText": "URL for the FOSSA server to connect to."
+        },
+        "authenticationSchemes": [
+          {
+            "type": "ms.vss-endpoint.endpoint-auth-scheme-token"
+          }
+        ],
+        "helpMarkDown": "<a href=\"https://docs.fossa.io\" target=\"_blank\"><b>Learn More</b></a>"
+      }
+    }
+  ]
+}

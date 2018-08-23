@@ -1,0 +1,30 @@
+{
+  "name": "fossa-vsts-build-task",
+  "version": "1.0.0",
+  "description": "FOSSA CLI build step for TFS",
+  "main": "fossa/index.js",
+  "author": "FOSSA Inc",
+  "license": "Apache-2.0",
+  "private": false,
+  "scripts": {
+    "build": "yarn run tsc"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bluebird": "^3.5.1",
+    "decompress": "^4.2.0",
+    "fs-extra": "^7.0.0",
+    "vsts-task-lib": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/decompress": "^4.2.3",
+    "@types/fs-extra": "^5.0.4",
+    "@types/node": "^10.7.1",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.9.2",
+    "tslint-config-prettier": "^1.14.0",
+    "tslint-immutable": "^4.6.0",
+    "tslint-microsoft-contrib": "^5.2.0",
+    "typescript": "^3.0.1"
+  }
+}

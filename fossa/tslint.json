@@ -1,0 +1,76 @@
+{
+  "extends": [
+    "tslint:recommended",
+
+    "tslint-config-airbnb",
+    "tslint-microsoft-contrib",
+
+    "tslint-immutable",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "missing-jsdoc": false,
+    "import-name": false,
+    "no-relative-imports": false,
+    "interface-name": [true, "never-prefix"],
+    "prefer-array-literal": [true, {"allow-type-parameters": true}],
+    "array-type": [true, "array-simple"],
+    "max-func-body-length": false,
+    "underscore-consistent-invocation": [true, {"style": "static"}],
+    "no-single-line-block-comment": false,
+    "no-backbone-get-set-outside-model": false,
+    "no-require-imports": false,
+    "no-var-requires": false,
+    "no-parameter-properties": false,
+    "prefer-type-cast": false,
+    "no-angle-bracket-type-assertion": true,
+    "cyclomatic-complexity": false,
+    "typedef": false,
+    "no-http-string": [false, "http://localhost/?.*"],
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
+    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"],
+    "function-name": [
+      true,
+      {
+        "method-regex": "^_?[a-z][\\w\\d]+$",
+        "private-method-regex": "^_?[a-z][\\w\\d]+$",
+        "protected-method-regex": "^_?[a-z][\\w\\d]+$",
+        "static-method-regex": "^_?[A-Z_\\d]+$",
+        "function-regex": "^_?[a-z][\\w\\d]+$"
+      }
+    ],
+    "export-name": false,
+    "no-import-side-effect": [true, {"ignore-module": "(\\.html|\\.css)$"}],
+    "member-access": [true, "no-public"],
+    "member-ordering": [false],
+    "ordered-imports": false,
+    "no-default-export": false, // TODO(leo): this is temporary until we migrate everything off default exports.
+    "no-reserved-keywords": false, // For React actions using "type".
+    "curly": [true, "ignore-same-line"],
+    "switch-default": false, // For exhaustiveness checking.
+    "jsx-boolean-value": [true, "never"],
+    "trailing-comma": [true, {
+      "multiline": {
+        "arrays": "always",
+        "objects": "always",
+        "functions": "always",
+        "imports": "always",
+        "exports": "always",
+        "typeLiterals": "always"
+      },
+      "singleline": {
+        "arrays": "never",
+        "objects": "never",
+        "functions": "never",
+        "imports": "never",
+        "exports": "never",
+        "typeLiterals": "never"
+      }
+    }],
+    "newline-before-return": false,
+    // Turn these on when we have the bandwidth.
+    "react-a11y-role-has-required-aria-props": false,
+    "react-a11y-event-has-role": false,
+    "react-a11y-img-has-alt": false
+  }
+}
