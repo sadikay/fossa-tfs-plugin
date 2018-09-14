@@ -12,7 +12,7 @@
   "version": {
     "Major": 0,
     "Minor": 0,
-    "Patch": 15
+    "Patch": 20
   },
   "demands": [
     "node.js"
@@ -86,6 +86,18 @@
       "options": {
         "TEST": "Fail build if issues are found",
         "SKIP": "I'll check for issues on FOSSA"
+      }
+    },
+    {
+      "name": "debugFlag",
+      "type": "pickList",
+      "label": "Run FOSSA with debug output",
+      "defaultValue": "NO",
+      "required": false,
+      "helpMarkDown": "Show debug logs when running `fossa`",
+      "options": {
+        "NO": "Do not show debug information",
+        "YES": "Show debug output"
       }
     }
   ],

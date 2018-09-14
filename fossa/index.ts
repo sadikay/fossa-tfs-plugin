@@ -28,6 +28,8 @@ tl.debug(`EndpointURL: ${EndpointURL}`);
 const ServiceAuthorization = tl.getEndpointAuthorization(Service, true);
 const FOSSATest = tl.getInput('failOnError') as 'TEST' | 'SKIP';
 tl.debug(`FOSSATest: ${FOSSATest}`);
+const FOSSADebug = (tl.getInput('debugFlag') as 'YES' | 'NO') === 'YES';
+tl.debug(`FOSSADebug: ${FOSSADebug}`);
 
 const run = async () => {
   try {
@@ -72,7 +74,8 @@ const analyze = async () => {
   fossa.arg('analyze');
   fossa.arg(['--endpoint', EndpointURL]);
   fossa.argIf(!!CLIConfig, ['--config', CLIConfig]);
-  tl.setVariable('FOSSA_API_KEY', ServiceAuthorization.parameters.apitoken, true);
+  fossa.argIf(!!FOSSADebug, ['--debug']);
+  tl.setVariable('FOSSA_API_KEY', ServiceAuthorization.parameters.apitoken);
   await fossa.exec();
   tl.setVariable('FOSSA_API_KEY', null);
 };
@@ -111,7 +114,8 @@ const test = async () => {
   fossa.arg('test');
   fossa.arg(['--endpoint', EndpointURL]);
   fossa.argIf(!!CLIConfig, ['--config', CLIConfig]);
-  tl.setVariable('FOSSA_API_KEY', ServiceAuthorization.parameters.apitoken, true);
+  fossa.argIf(!!FOSSADebug, ['--debug']);
+  tl.setVariable('FOSSA_API_KEY', ServiceAuthorization.parameters.apitoken);
   await fossa.exec();
   tl.setVariable('FOSSA_API_KEY', null);
 };

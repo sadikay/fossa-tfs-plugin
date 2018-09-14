@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "fossa-vsts",
   "publisher": "Fossa",
-  "version": "0.0.15",
+  "version": "0.0.20",
   "name": "FOSSA",
   "description": "Automatically analyze your code for open source license compliance and security vulnerabilities",
   "public": false,
