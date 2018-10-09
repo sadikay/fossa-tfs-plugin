@@ -3,3 +3,4 @@ node_modules
 *.map
 *.vsix
 .taskkey
+.DS_Store

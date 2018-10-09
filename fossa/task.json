@@ -12,13 +12,13 @@
   "version": {
     "Major": 0,
     "Minor": 0,
-    "Patch": 20
+    "Patch": 22
   },
   "demands": [
     "node.js"
   ],
   "icons": {
-    "default": "../images/fossa-glyph-dark.png"
+    "default": "fossa-glyph-dark.png"
   },
   "minimumAgentVersion": "2.100.0",
   "instanceNameFormat": "FOSSA $(message)",
@@ -58,7 +58,7 @@
       "label": "Version of fossa-cli to install",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "Version tag from https://github.com/fossas/fossa-cli/releases to install",
+      "helpMarkDown": "Version tag from [https://github.com/fossas/fossa-cli/releases](GitHub) to install",
       "visibleRule": "source = INSTALL"
     },
     {
